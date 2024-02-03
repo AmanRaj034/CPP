@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[
+vector<ll> pf;
+void primefactor(ll n)
+{
+    if (n % 2 == 0)
+    {
+        pf.pb(2);
+        while (n % 2 == 0)
+        {
+            n /= 2;
+        }
+    }
+    for (ll i = 3; i * i <= n; i += 2)
+    {
+        if (n % i == 0)
+        {
+            pf.pb(i);
+            while (n % i == 0)
+            {
+                n /= i;
+            }
+        }
+    }
+    if (n > 2) pf.pb(n);
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>primefactor</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

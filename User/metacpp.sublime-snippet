@@ -1,0 +1,57 @@
+<snippet>
+	<content><![CDATA[
+#include "bits/stdc++.h"
+using namespace std;
+#define ll long long int
+#define un unsigned long long
+#define all(v) v.begin(),v.end()
+#define pb push_back
+
+const ll M=1e9+7;
+
+void solve()
+{
+    $1
+}
+
+void main_()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    int t = 1, t1;
+    cin >> t1;
+    while (t <= t1)
+    {
+        cout << "Case #" << t << ": " << solve() << "\n";
+        t++;
+    }
+}
+
+// increase stack size till 1GB
+static void run_with_stack_size(void (*func)(void), size_t stsize) {
+    char *stack, *send;
+    stack = (char *)malloc(stsize);
+    send = stack + stsize - 16;
+    send = (char *)((uintptr_t)send / 16 * 16);
+    asm volatile(
+        "mov %%esp, (%0)\n"
+        "mov %0, %%esp\n"
+        :
+        : "r"(send));
+    func();
+    asm volatile("mov (%0), %%esp\n" : : "r"(send));
+    free(stack);
+}
+
+int main() {
+    run_with_stack_size(main_, 1024 * 1024 * 1024); // run with a 1 GiB stack
+    return 0;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>metacpp.head</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,120 @@
+<snippet>
+	<content><![CDATA[
+struct Treap {
+	static minstd_rand generator;
+ 
+	struct Node {
+		ll key, priority, size = 1;
+		Node* l = nullptr, * r = nullptr;
+		Node(ll key) : key(key), priority(generator()) {}
+	} *root = nullptr;
+ 
+	static void update(Node* n) {
+		if (n) {
+			n->size = 1;
+			if (n->l) {
+				n->size += n->l->size;
+			}
+			if (n->r) {
+				n->size += n->r->size;
+			}
+		}
+	}
+ 
+	//� ������ ������ ����� ������, ��� �� ������
+	static Node* merge(Node* a, Node* b) {
+		update(a);
+		update(b);
+		if (a == nullptr) {
+			return b;
+		}
+		if (b == nullptr) {
+			return a;
+		}
+		if (a->priority > b->priority) {
+			a->r = merge(a->r, b);
+			update(a);
+			return a;
+		}
+		else {
+			b->l = merge(a, b->l);
+			update(b);
+			return b;
+		}
+	}
+ 
+	//������������ ������� ������������ � a � b
+	void split(Node* n, ll key, Node*& a, Node*& b) {
+		update(n);
+		if (n == nullptr) {
+			a = b = nullptr;
+			return;
+		}
+		if (n->key < key) {
+			split(n->r, key, n->r, b);
+			a = n;
+		}
+		else {
+			split(n->l, key, a, n->l);
+			b = n;
+		}
+		update(a);
+		update(b);
+	}
+ 
+	//����� �������� � ������
+	bool find(ll key) {
+		Node* greater, * equal, * less;
+		split(root, key, less, greater);
+		split(greater, key + 1, equal, greater);
+		bool result = equal;
+		root = merge(merge(less, equal), greater);
+		return result;
+	}
+ 
+	//���������� �������� � ������
+	void insert(ll key) {
+		Node* greater, * less;
+		split(root, key, less, greater);
+		less = merge(less, new Node(key));
+		root = merge(less, greater);
+	}
+ 
+	//�������� �������� �� ������
+	void erase(ll key) {
+		Node* greater, * less, * equal;
+		split(root, key, less, greater);
+		split(greater, key + 1, equal, greater);
+		root = merge(less, greater);
+	}
+ 
+	ll lower(ll key) {
+		Node* greater, * less;
+		split(root, key, less, greater);
+		ll res = less? less->size : 0;
+		root = merge(less, greater);
+		return res;
+	}
+ 
+	ll upper(ll key) {
+		Node* greater, * less;
+		split(root, key + 1, less, greater);
+		ll res = greater ? greater->size : 0;
+		root = merge(less, greater);
+		return res;
+	}
+};
+minstd_rand Treap::generator;
+
+//Treap Tr;
+/*
+Tr.insert(vec[i]);
+Tr.lower(vec[i]); //Number of element less than it
+Tr.upper(vec[i]); // Number of element greater than it
+*/
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Treap</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

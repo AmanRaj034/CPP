@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+// value of (1/a)%m is where m is prime
+ll inverese(ll a, ll m)
+{
+    return binpow(a, m - 2, m);
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>inverese</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

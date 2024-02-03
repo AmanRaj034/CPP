@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+ll binary_seach(ll find)
+{
+  ll l=0,r=n-1;
+  while(l<=r)
+  {
+      ll mid=(l+(r-l)/2);
+      if(v[mid]<=find)
+      {
+          l=mid+1;
+          ans=mid;
+      }
+      else
+      {
+          r=mid-1;
+      }
+  }
+  return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>binarysearch</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

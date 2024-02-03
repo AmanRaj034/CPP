@@ -1,0 +1,59 @@
+<snippet>
+	<content><![CDATA[
+constexpr int N = std::sqrt(1E9);
+vector<ll> isprime(N + 1, 1);
+vector<ll> primes;
+void sieve()
+{
+    for (int i = 2; i <= N; i++) {
+        if (isprime[i]) {
+            primes.push_back(i);
+        }
+        for (auto p : primes) {
+            if (i * p > N) {
+                break;
+            }
+            isprime[i * p] = 0;
+            if (i % p == 0) {
+                break;
+            }
+        }
+    }
+}
+
+// old sieve -->
+//
+// const ll N = sqrt(1e9) + 1;
+
+// bool primes[N + 1];
+// vector<ll> pr;
+// void sieve()
+// {
+//     primes[1] = true;
+//     for (ll i = 2; i <= N ; ++i)
+//     {
+//         if (!primes[i])
+//         {
+//             pr.push_back(i);
+//             for (ll j = i * i; j <= N; j += i)
+//             {
+//                 primes[j] = true;
+//             }
+//         }
+//     }
+
+//     //if needed to store primes till N
+//     // for (ll i = sqrt(N) + 1; i <= N; ++i)
+//     // {
+//     //     if (!primes[i])
+//     //     {
+//     //        pr.push_back(i);
+//     //     }
+//     // }
+// } -->
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>sieve</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
