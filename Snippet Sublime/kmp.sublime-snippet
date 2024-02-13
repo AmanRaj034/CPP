@@ -1,0 +1,54 @@
+<snippet>
+	<content><![CDATA[
+void lps(vector<ll>&pi, string &s)
+{
+    pi[0] = 0;
+    for (ll i = 1; i < sz(s); ++i)
+    {
+        ll l = pi[i - 1];
+        while (l > 0 && s[i] != s[l])
+        {
+            l = pi[l - 1];
+        }
+        if (s[i] == s[l]) l++;
+        pi[i] = l;
+    }
+}
+
+// Pattern which we want to search
+// Text in which we want to search
+// vector<ll> st = kmp(p, t); 
+vector<ll>  kmp(string &pattern, string &text)
+{
+    pattern.pb('#');
+    vector<ll> pi(sz(pattern));
+    lps(pi, pattern);
+    ll count = 0; // Gives number of positions where pattern matches
+    vector<ll> st; // Stores starting position of index at which pattern matches zero based index
+    ll prev = 0;
+    debug(pi);
+    for (ll i = 0; i < sz(text); ++i)
+    {
+        ll l = prev;
+        while (l > 0 && text[i] != pattern[l])
+        {
+            l = pi[l - 1];
+        }
+        if (text[i] == pattern[l]) l++;
+        prev = l;
+        if (l == sz(pattern) - 1)
+        {
+            count++;
+            st.pb(i + 1 - sz(pattern) + 1);
+        }
+    }
+    pattern.pop_back();
+    return st;
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>kmp</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

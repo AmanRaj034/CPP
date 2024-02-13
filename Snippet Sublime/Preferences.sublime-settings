@@ -4,5 +4,5 @@
 		"Vintage",
 	],
 	"font_size": 9,
-	"index_files": true,
+	"index_files": false,
 }
