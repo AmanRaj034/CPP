@@ -1,16 +1,17 @@
 <snippet>
 	<content><![CDATA[
-ll binpow(ll a, ll b,ll m)
+ll binpow(ll a, ll b, ll m)
 {
-	ll result = 1;
-	while (b)
-	{
-		if (b & 1) result = (result*a)%m;
-		a = (a*a)%m;
-		b /= 2;       // b>>=1;
-	}
-	return result;
+    ll result = 1;
+    while (b)
+    {
+        if (b & 1) result = ((result % m) * (a % m)) % m;
+        a = ((a % m) * (a % m)) % m;
+        b /= 2;       // b>>=1;
+    }
+    return result;
 }
+
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
 	<tabTrigger>binpow</tabTrigger>

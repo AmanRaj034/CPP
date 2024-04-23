@@ -13,7 +13,14 @@ const ll M = 1e9 + 7;
 void solve()
 {
     $1
+    // solve with observation
+    // think greedly
+    // solve with pen or paper
+    // start code only if you are confident
+    // if have some doubt then use pen paper
+    // Generate Small Test Cases and cross check
 }
+
 int main()
 {
     ios::sync_with_stdio(0);

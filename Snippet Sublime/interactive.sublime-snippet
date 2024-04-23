@@ -1,5 +1,5 @@
 <snippet>
-    <content><![CDATA[
+	<content><![CDATA[
 #include "bits/stdc++.h"
 using namespace std;
 #define ll long long int
@@ -9,7 +9,6 @@ using namespace std;
 #define sz(x) ((int)(x).size())
 
 const ll M = 1e9 + 7;
-
 
 void solve()
 {
@@ -21,19 +20,18 @@ void solve()
     // if have some doubt then use pen paper
     // Generate Small Test Cases and cross check
 }
-
 int main()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
+    //ios::sync_with_stdio(0);
+    //cin.tie(0);
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
     int t = 1;
-    //cin >> t; 
+    cin >> t;
     for (int i = 1; i <= t; ++i)
     {
 #ifndef ONLINE_JUDGE
-       //cout << "\n______Test : " << i << "\n\n";
+       // cout << "\n______Test : " << i << "\n\n";
 #endif
         solve();
     }
@@ -43,8 +41,8 @@ int main()
     return 0;
 }
 ]]></content>
-    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-    <tabTrigger>cpp.head</tabTrigger>
-    <!-- Optional: Set a scope to limit where the snippet will trigger -->
-    <scope>source.c++</scope>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>interactivecpp</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
 </snippet>
