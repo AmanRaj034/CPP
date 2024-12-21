@@ -1,0 +1,12 @@
+divisor
+
+prime factor with sieve or without sieve
+
+power
+
+
+prefrences->key bindings
+
+{ "keys" : ["ctrl+q"], "command": "cancel_build"},
+
+
