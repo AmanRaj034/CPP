@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+//euler's totent function
+ll phi(ll x)
+{
+    ll ans = x;
+    for (ll i = 2; i * i <= x; ++i)
+    {
+        if (x % i == 0)
+        {
+            ans -= ans / i;
+            while (x % i == 0)
+            {
+                x /= i;
+            }
+        }
+    }
+    if (x != 1) ans -= ans / x;
+    return ans;
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>euler_totent's</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

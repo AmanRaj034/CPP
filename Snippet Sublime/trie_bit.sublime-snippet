@@ -1,0 +1,130 @@
+<snippet>
+	<content><![CDATA[
+//  Trie t;
+//  Trie_Node *temp = t.root;
+struct Trie_Node {
+    // If we want zero then that else +32.
+    Trie_Node *link[2];
+    ll coun = 0;
+    bool flag = false;
+
+    bool is_contain(ll x, ll chaiye)
+    {
+        // if (chaiye == 1) x += 32;
+        return link[chaiye] != NULL;
+    }
+
+    void insert(ll x, ll chaiye)
+    {
+        // if (chaiye == 1) x += 32;
+        link[chaiye] = new Trie_Node();
+    }
+
+    Trie_Node *get_word1(ll x, ll chaiye)
+    {
+        // if (chaiye == 1) x += 32;
+        link[chaiye]->coun++;
+        return link[chaiye];
+    }
+
+    Trie_Node *get_word(ll x, ll chaiye)
+    {
+        // if (chaiye == 1) x += 32;
+        return link[chaiye];
+    }
+
+    ll count_now(ll x, ll chaiye)
+    {
+        // if (chaiye == 1) x += 32;
+        return --coun;
+    }
+
+    void del(ll x, ll chaiye)
+    {
+        // if (chaiye == 1) x += 32;
+        Trie_Node *t = link[chaiye];
+        link[chaiye] = NULL;
+        delete t;
+    }
+};
+
+
+class Trie {
+public:
+    Trie_Node *root;
+    Trie() {
+        root = new Trie_Node();
+    }
+
+    void insert(ll x)
+    {
+        Trie_Node *temp = root;
+        for (ll i = 31; i >= 0; --i)
+        {
+            ll chaiye = 0;
+            if ((1ll << i)&x)
+            {
+                chaiye = 1;
+            }
+            if (!temp->is_contain(i, chaiye))
+            {
+                temp->insert(i, chaiye);
+            }
+            temp = temp->get_word1(i, chaiye);
+        }
+    }
+
+    void del(ll x)
+    {
+        Trie_Node *temp = root;
+        for (ll i = 31; i >= 0; --i)
+        {
+            ll chaiye = 0;
+            if ((1ll << i)&x)
+            {
+                chaiye = 1;
+            }
+            Trie_Node *temp1 = temp->get_word(i, chaiye);
+            if (!temp1->count_now(i, chaiye))
+            {
+                temp->del(i, chaiye);
+                break;
+            }
+            else
+            {
+                temp = temp->get_word(i, chaiye);
+            }
+        }
+    }
+
+    // Designed it according to question
+    ll query(ll x)
+    {
+        Trie_Node *temp = root;
+        ll ans = 0;
+        for (ll i = 31; i >= 0; --i)
+        {
+            ll chaiye = 1;
+            if ((1ll << i)&x)
+            {
+                chaiye = 0;
+            }
+            if (!temp->is_contain(i, chaiye))
+            {
+                temp = temp->get_word(i, !chaiye);
+            }
+            else
+            {
+                temp = temp->get_word(i, chaiye);
+                ans |= (1ll << i);
+            }
+        }
+        return ans;
+    }
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Trie_Bit</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

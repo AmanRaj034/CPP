@@ -2,13 +2,18 @@
     <content><![CDATA[
 #include "bits/stdc++.h"
 using namespace std;
+#define lld long double
 #define ll long long int
 #define un unsigned long long
 #define all(v) v.begin(),v.end()
 #define pb push_back
-#define sz(x) ((int)(x).size())
 
-const ll M = 1e9 + 7;
+template <typename T>
+int sz(const T& container) {
+    return static_cast<int>(container.size());
+}
+
+const int M = 1e9 + 7;
 
 
 void solve()
@@ -22,19 +27,20 @@ void solve()
     // Generate Small Test Cases and cross check
 }
 
-int main()
+signed main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
+    #ifndef ONLINE_JUDGE
+        freopen("debug.txt", "w", stderr);
+       //cout << "\n______Test : " << i << "\n\n";
+#endif
     int t = 1;
     //cin >> t; 
     for (int i = 1; i <= t; ++i)
     {
-#ifndef ONLINE_JUDGE
-       //cout << "\n______Test : " << i << "\n\n";
-#endif
         solve();
     }
 #ifndef ONLINE_JUDGE

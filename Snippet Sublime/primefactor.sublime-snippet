@@ -1,28 +1,52 @@
 <snippet>
 	<content><![CDATA[
-vector<ll> pf;
-void primefactor(ll n)
+// Below are two metods first one is fast but use according to use
+vector<ll> primefactor(ll n)
 {
-    if (n % 2 == 0)
-    {
-        pf.pb(2);
-        while (n % 2 == 0)
-        {
-            n /= 2;
-        }
-    }
-    for (ll i = 3; i * i <= n; i += 2)
-    {
-        if (n % i == 0)
-        {
-            pf.pb(i);
-            while (n % i == 0)
-            {
-                n /= i;
-            }
-        }
-    }
-    if (n > 2) pf.pb(n);
+    vector<ll> pf;
+    // call sieve first
+    // ll j = 0, temp = n;
+    //     while (j < sz(primes) && primes[j] * primes[j] <= temp)
+    //     {
+    //         if (temp % primes[j] == 0)
+    //         {
+    //             pf.pb(primes[j]);
+    //             while (temp % primes[j] == 0)
+    //             {
+    //                 temp /= primes[j];
+    //             }
+    //         }
+    //         j++;
+    //     }
+    //     if(temp!=1)
+    //     {
+    //         pf.pb(temp);
+    //     }
+
+    without using sieve
+    // if (n % 2 == 0)
+    // {
+    //     pf.pb(2);
+    //     while (n % 2 == 0)
+    //     {
+    //         n /= 2;
+    //     }
+    // }
+    // for (ll i = 3; i * i <= n; i += 2)
+    // {
+    //     if (n % i == 0)
+    //     {
+    //         pf.pb(i);
+    //         while (n % i == 0)
+    //         {
+    //             n /= i;
+    //         }
+    //     }
+    // }
+    // if (n > 2) pf.pb(n);
+
+    
+    return pf;
 }
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->

@@ -2,6 +2,8 @@
 	<content><![CDATA[
 
 //modulor operation
+// Don't use if contraint is high write simply 
+
 ll mod_add(ll a, ll b, ll m)
 {
     a = a % m;

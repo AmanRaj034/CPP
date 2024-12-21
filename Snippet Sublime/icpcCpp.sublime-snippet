@@ -32,24 +32,17 @@ signed main()
     cin.tie(0);
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
-    #ifndef ONLINE_JUDGE
-        freopen("debug.txt", "w", stderr);
-       // cout << "\n______Test : " << i << "\n\n";
-#endif
     int t = 1;
     cin >> t;
     for (int i = 1; i <= t; ++i)
     {
         solve();
     }
-#ifndef ONLINE_JUDGE
-    cout << "\nDone!";
-#endif
     return 0;
 }
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>cpp.head</tabTrigger>
+	<tabTrigger>icpc.head</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<scope>source.c++</scope>
 </snippet>

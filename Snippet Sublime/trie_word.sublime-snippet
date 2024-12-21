@@ -1,0 +1,94 @@
+<snippet>
+	<content><![CDATA[
+//  Trie t;
+//  Trie_Node *temp = t.root;
+struct Trie_Node {
+    Trie_Node *link[26];
+    bool flag = false;
+
+    bool is_contain(char c)
+    {
+        return link[c - 'a'] != NULL;
+    }
+
+    void insert(char c)
+    {
+        link[c - 'a'] = new Trie_Node();
+    }
+
+    void set_end()
+    {
+        flag = true;
+    }
+
+    Trie_Node *get_word(char c)
+    {
+        return link[c - 'a'];
+    }
+
+    bool is_end()
+    {
+        return flag;
+    }
+};
+
+
+class Trie {
+public:
+    Trie_Node *root;
+    Trie() {
+        root = new Trie_Node();
+    }
+
+    void insert(string &word) {
+        Trie_Node *temp = root;
+        for (int i = 0; i < sz(word); ++i)
+        {
+            if (!temp->is_contain(word[i]))
+            {
+                temp->insert(word[i]);
+            }
+            temp = temp->get_word(word[i]);
+        }
+        temp->set_end();
+    }
+
+    bool search(string &word) {
+        Trie_Node *temp = root;
+        for (int i = 0; i < sz(word); ++i)
+        {
+            if (temp->is_contain(word[i]))
+            {
+                temp = temp->get_word(word[i]);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return temp->is_end();
+    }
+
+    bool startsWith(string &prefix) {
+        Trie_Node *temp = root;
+        for (int i = 0; i < sz(prefix); ++i)
+        {
+            if (temp->is_contain(prefix[i]))
+            {
+                temp = temp->get_word(prefix[i]);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Trie_word</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
