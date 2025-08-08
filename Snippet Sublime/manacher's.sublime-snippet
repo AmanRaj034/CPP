@@ -1,0 +1,60 @@
+<snippet>
+	<content><![CDATA[
+
+// p[i] tell no of character's same from i to front and back of string t
+class manacher {
+public:
+	vector<int> p;
+
+	void run_manacher(string &s) {
+		int n = s.length();
+		p.assign(n, 1);
+		int l = 1, r = 1;
+
+		for (int i = 1; i < n; ++i) {
+			if (i < r) {
+				p[i] = min(r - i, p[r - i + l]);
+			}
+
+			while (i + p[i] < n && i - p[i] >= 0 && s[i - p[i]] == s[i + p[i]]) {
+				p[i]++;
+			}
+
+			if (i + p[i] > r) {
+				r = i + p[i], l = i - p[i];
+			}
+		}
+	}
+
+	manacher(string &s) {
+		string t;
+		for (auto c : s) {
+			t += string("#") + c;
+		}
+		t += '#';
+		run_manacher(t);
+	}
+
+	// return longest palindrome if cen is center
+	int getLongest(int cen, bool odd) {
+		int pos = 2 * cen + 1 + (!odd);
+		return p[pos] - 1;
+	}
+
+	// check if [l, r] is palindrome
+	bool checkPaln(int l, int r) {
+		int cen = (l + r) / 2;
+		int lenParity = (r - l + 1) % 2;
+		if ((r - l + 1) <= getLongest(cen, lenParity)) {
+			return 1;
+		}
+		else return 0;
+	}
+};
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>manacher's</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

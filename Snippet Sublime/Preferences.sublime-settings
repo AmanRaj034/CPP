@@ -1,10 +1,8 @@
 {
+	"font_size": 9,
 	"ignored_packages":
 	[
-		"Formatter",
-		"Pretty JSON",
 		"Vintage",
 	],
-	"font_size": 9,
 	"index_files": false,
 }

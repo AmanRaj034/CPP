@@ -2,14 +2,12 @@
 	"bootstrapped": true,
 	"in_process_packages":
 	[
-		"Formatter",
-		"Pretty JSON",
 	],
 	"installed_packages":
 	[
 		"Formatter",
 		"Package Control",
 		"Pretty JSON",
-		"SublimeAStyleFormatter",
+		"SublimeAStyleFormatter"
 	],
 }
